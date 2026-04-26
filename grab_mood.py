@@ -18,7 +18,7 @@ def grab_recommendation(number):
                 "Synopsis": "An ordinary Lego construction worker, thought to be the prophesied 'Special', is recruited to join a quest to stop an evil tyrant from gluing the Lego universe into eternal stasis.",
                 "link": "https://www.imdb.com/title/tt1490017/",
             },
-            "Image Link": "images/lego_movie.jpg"
+            "Image Link": "images/Lego_movie.jpg"
             }
 
         if number == 2:
