@@ -306,7 +306,7 @@ elif st.session_state["page"] == "Profile":
         st.markdown(
             f"""
             <div style="
-                background-color:#F3F4F6;
+                background-color:#E5E7EB;
                 border-radius:24px;
                 padding:1rem;
                 text-align:center;
@@ -348,7 +348,7 @@ elif st.session_state["page"] == "Profile":
         st.markdown(
             f"""
             <div style="
-                background-color:#F3F4F6;
+                background-color:#E5E7EB;
                 border-radius:22px;
                 padding:1rem;
                 margin-top:1rem;
@@ -396,7 +396,7 @@ elif st.session_state["page"] == "Menu":
         st.markdown(
             """
             <div style="
-                background-color:#F3F4F6;
+                background-color:#E5E7EB;
                 border-radius:22px;
                 padding:1rem;
                 margin-bottom:1rem;
