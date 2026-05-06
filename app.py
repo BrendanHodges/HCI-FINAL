@@ -423,46 +423,102 @@ elif st.session_state["page"] == "Menu":
         )
 
         if st.button("🔥 What's Popular", key="popular_btn", use_container_width=True):
-            st.session_state["page"] = "Popular"
-            st.rerun()
+            st.warning("Popular recommendations coming soon!")
+            st.session_state.increase_readability = False  
 
         if st.button("🕘 Previous Choices", key="previous_choices_btn", use_container_width=True):
-            st.session_state["page"] = "Previous Choices"
-            st.rerun()
+            st.warning("Previous choices feature coming soon!")
+            st.session_state.increase_readability = False  
 
         if st.button("❓ Help Center", key="help_center_btn", use_container_width=True):
             st.session_state["page"] = "Help Center"
             st.rerun()
 
-elif st.session_state["page"] == "Popular":
-    with phone_shell():
-        st.markdown("---")
-        if st.button("← Back to Menu", key="back_popular"):
-            st.session_state["page"] = "Menu"
-            st.rerun()
-
-        st.title("What's Popular")
-        st.write("Popular recommendations will appear here.")
-
-elif st.session_state["page"] == "Previous Choices":
-    with phone_shell():
-        st.markdown("---")
-        if st.button("← Back to Menu", key="back_previous"):
-            st.session_state["page"] = "Menu"
-            st.rerun()
-
-        st.title("Previous Choices")
-        st.write("Your past matches will appear here.")
 
 elif st.session_state["page"] == "Help Center":
+    st.markdown("---")
     with phone_shell():
-        st.markdown("---")
-        if st.button("← Back to Menu", key="back_help"):
-            st.session_state["page"] = "Menu"
-            st.rerun()
 
-        st.title("Help Center")
-        st.write("Need help? This section can explain how Mood Matcher works.")
+        st.markdown('<div class="top-nav">', unsafe_allow_html=True)
+
+        nav_left, nav_center, nav_right = st.columns([1, 3, 1])
+
+        with nav_left:
+            if st.button("←", key="back_help"):
+                st.session_state["page"] = "Menu"
+                st.rerun()
+
+        with nav_center:
+            st.markdown(
+                "<div class='top-nav-title'>Help Center</div>",
+                unsafe_allow_html=True
+            )
+
+        with nav_right:
+            st.markdown("")
+
+        st.markdown('</div>', unsafe_allow_html=True)
+
+        st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
+
+        st.markdown(
+            """
+            <div style="
+                background-color:#E5E7EB;
+                border-radius:22px;
+                padding:1rem;
+                margin-bottom:1rem;
+                text-align:center;
+            ">
+                <div style="font-size:1.4rem; font-weight:700; color:#111;">
+                    ❓ Help Center
+                </div>
+                <div style="font-size:0.9rem; color:#666; margin-top:0.25rem;">
+                    Learn how to use Mood Matcher and get better recommendations.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        st.markdown("**Application Information**")
+        st.write(
+            "Mood Matcher helps users find entertainment based on their current mood, "
+            "personal preferences, and the type of experience they are looking for."
+        )
+
+        st.divider()
+
+        st.markdown("**Tips for Better Results**")
+        st.write("• Be specific when entering your mood, such as stressed, excited, bored, or relaxed.")
+        st.write("• Choose preferences that match what you want right now.")
+        st.write("• Update your profile if your entertainment interests change.")
+        st.write("• Try a new mood search when you want a different recommendation.")
+
+        st.divider()
+
+        st.markdown("**Need More Help?**")
+        st.write("For additional support, contact Mood Matcher support at:")
+
+        st.markdown(
+            """
+            <div style="
+                background-color:#E5E7EB;
+                border-radius:18px;
+                padding:0.9rem;
+                text-align:center;
+                margin-top:0.5rem;
+            ">
+                <div style="font-size:1rem; font-weight:700; color:#111;">
+                    📞 Support Number
+                </div>
+                <div style="font-size:1.2rem; font-weight:700; color:#333; margin-top:0.25rem;">
+                    (555) 123-4567
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
 if st.session_state.get("increase_readability", True):
     st.markdown("""
