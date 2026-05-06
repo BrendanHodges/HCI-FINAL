@@ -284,3 +284,10 @@ div[data-testid="stCaptionContainer"] {
 .stButton > button {
     border-radius: 10px;
 }
+
+.small-info-button button {
+    padding: 0.1rem 0.35rem !important;
+    min-height: 1.4rem !important;
+    font-size: 0.7rem !important;
+    border-radius: 6px !important;
+}

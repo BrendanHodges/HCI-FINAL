@@ -24,6 +24,7 @@ def phone_shell():
 if st.session_state["page"] == "Hello":
     st.markdown("---")
     with phone_shell():
+        st.toggle("Increase Readability", key="increase_readability")
         st.markdown("""
             <div class="welcome-wrap">
                 <div class="welcome-emoji">🎭</div>
@@ -62,11 +63,12 @@ if st.session_state["page"] == "Hello":
             </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("---")
+        st.markdown("<div style='height: 25px;'></div>", unsafe_allow_html=True)
 
 elif st.session_state["page"] == "Intro Page":
     st.markdown("---")
     with phone_shell():
+        st.toggle("Increase Readability", key="increase_readability")
         st.markdown("""
             <div class="welcome-wrap">
                 <div class="welcome-emoji">🎭</div>
@@ -82,6 +84,12 @@ elif st.session_state["page"] == "Intro Page":
             "Name",
             key="user_name",
             placeholder="Enter your name"
+        )
+
+        email = st.text_input(
+            "Email",
+            key="email",
+            placeholder="you@example.com"
         )
 
         age = st.number_input(
@@ -120,12 +128,14 @@ elif st.session_state["page"] == "Intro Page":
             elif age < 12:
                 st.warning("Sorry, you must be at least 12 years old to use this app.")
                 
+            elif not email:
+                st.warning("Please enter your email before continuing.")
+                
             elif entertainment_type == "Select one":
                 st.warning("Please choose a preferred entertainment type.")
                 
             elif favorite_genre == "Select one":
                 st.warning("Please choose a favorite genre.")
-                
             else:
                 st.session_state["saved_profile"] = {
                         "name": st.session_state["user_name"],
@@ -136,13 +146,11 @@ elif st.session_state["page"] == "Intro Page":
                     }
                 st.session_state["page"] = "Mood Matcher"
                 st.rerun()
-
-        st.markdown("---")
 elif st.session_state["page"] == "Mood Matcher":
     st.markdown("---")
     with phone_shell():
+        st.toggle("Increase Readability", key="increase_readability")
 
-        # NAV BAR
         st.markdown('<div class="top-nav">', unsafe_allow_html=True)
 
         nav_left, nav_center, nav_right = st.columns([1, 3, 1])
@@ -173,6 +181,7 @@ elif st.session_state["page"] == "Mood Matcher":
             "<p style='text-align:center; font-size:0.98rem; color:#555; margin-bottom:0.2rem;'>How are you feeling today?</p>",
             unsafe_allow_html=True
         )
+        
         st.markdown(
             "<p style='text-align:center; font-size:0.88rem; color:#777; margin-top:0;'>Tell us your mood and a few quick preferences.</p>",
             unsafe_allow_html=True
@@ -189,7 +198,6 @@ elif st.session_state["page"] == "Mood Matcher":
 
         st.markdown("<div style='height: 6px;'></div>", unsafe_allow_html=True)
 
-        # ADDITIONAL PREFERENCES
         st.markdown(
             "<p style='font-weight:600; font-size:1rem; margin-bottom:0.4rem;'>A few quick preferences</p>",
             unsafe_allow_html=True
@@ -232,6 +240,7 @@ elif st.session_state["page"] == "Mood Matcher":
 elif st.session_state["page"] == "Recommendation":
     st.markdown("---")
     with phone_shell():
+        st.toggle("Increase Readability", key="increase_readability")
 
         if "recommendation_number" not in st.session_state:
             st.session_state["recommendation_number"] = 1
@@ -454,3 +463,26 @@ elif st.session_state["page"] == "Help Center":
 
         st.title("Help Center")
         st.write("Need help? This section can explain how Mood Matcher works.")
+
+if st.session_state.get("increase_readability", True):
+    st.markdown("""
+    <style>
+    .stApp {
+        font-size: 18px;
+    }
+
+    button {
+        min-height: 48px !important;
+        font-size: 18px !important;
+    }
+
+    input, textarea {
+        font-size: 18px !important;
+    }
+
+    p, label, span {
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
